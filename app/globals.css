@@ -130,17 +130,37 @@
 }
 @media print {
 
+  body * {
+    visibility: hidden;
+  }
+
+  #cv-preview,
+  #cv-preview * {
+    visibility: visible;
+  }
+
+  #cv-preview {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
   button {
     display: none !important;
   }
 
   a {
-    color: black;
-    text-decoration: none;
+    color: black !important;
+    text-decoration: none !important;
   }
 
   body {
-    background: white;
+    background: white !important;
   }
 
 }

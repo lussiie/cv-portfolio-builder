@@ -53,46 +53,54 @@ export default function CVHeader({ cv }: { cv: any }) {
             className="h-40 w-40 rounded-full border-4 border-white object-cover"
           />
         ) : (
-          <div
-            className={`
-              flex h-40 w-40 items-center justify-center
-              rounded-full text-5xl font-bold
-              ${
-                template === "minimal"
-                  ? "bg-slate-100 text-slate-700"
-                  : "bg-slate-700 text-white"
-              }
-            `}
-          >
-            {profile?.fullName?.charAt(0) || "A"}
-          </div>
+          profile?.fullName && (
+            <div
+              className={`
+                flex h-40 w-40 items-center justify-center
+                rounded-full text-5xl font-bold
+                ${
+                  template === "minimal"
+                    ? "bg-slate-100 text-slate-700"
+                    : "bg-slate-700 text-white"
+                }
+              `}
+            >
+              {profile.fullName.charAt(0).toUpperCase()}
+            </div>
+          )
         )}
       </div>
+
 
       {/* INFO */}
 
       <div>
-        <h1
-          className={`
-            text-5xl font-bold
-            ${template === "minimal" ? themes[theme].text : ""}
-          `}
-        >
-          {profile?.fullName || "Your Name"}
-        </h1>
+        {profile?.fullName && (
+          <h1
+            className={`
+              text-5xl font-bold
+              ${template === "minimal" ? themes[theme].text : ""}
+            `}
+          >
+            {profile.fullName}
+          </h1>
+        )}
 
-        <p
-          className={`
-            mt-3 text-2xl
-            ${
-              template === "minimal"
-                ? "text-slate-500"
-                : "text-slate-300"
-            }
-          `}
-        >
-          {profile?.jobTitle || "Job Title"}
-        </p>
+        {profile?.jobTitle && (
+          <p
+            className={`
+              mt-3 text-2xl
+              ${
+                template === "minimal"
+                  ? "text-slate-500"
+                  : "text-slate-300"
+              }
+            `}
+          >
+            {profile.jobTitle}
+          </p>
+        )}
+
 
         <div
           className={`
@@ -104,12 +112,14 @@ export default function CVHeader({ cv }: { cv: any }) {
             }
           `}
         >
+
           {profile?.email && (
             <div className="flex items-center gap-3">
               <Mail size={18} />
               <span>{profile.email}</span>
             </div>
           )}
+
 
           {profile?.phone && (
             <div className="flex items-center gap-3">
@@ -118,12 +128,14 @@ export default function CVHeader({ cv }: { cv: any }) {
             </div>
           )}
 
+
           {profile?.location && (
             <div className="flex items-center gap-3">
               <MapPin size={18} />
               <span>{profile.location}</span>
             </div>
           )}
+
 
           {profile?.linkedin && (
             <a
@@ -136,6 +148,7 @@ export default function CVHeader({ cv }: { cv: any }) {
             </a>
           )}
 
+
           {profile?.github && (
             <a
               href={profile.github}
@@ -146,6 +159,7 @@ export default function CVHeader({ cv }: { cv: any }) {
               GitHub: {profile.github}
             </a>
           )}
+
         </div>
       </div>
     </header>
